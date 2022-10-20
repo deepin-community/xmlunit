@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/pkg-info.mk
+
+%:
+	dh $@ --with maven-repo-helper
+
+override_dh_auto_build:
+	dh_auto_build -- jar test -Dxmlunit.version=$(DEB_VERSION_UPSTREAM)
+	cp build/lib/xmlunit-*.pom build/lib/xmlunit.pom
+
+get-orig-pom:
+	wget -O debian/pom.xml http://repo1.maven.org/maven2/xmlunit/xmlunit/$(DEB_VERSION_UPSTREAM)/xmlunit-$(DEB_VERSION_UPSTREAM).pom

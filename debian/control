@@ -1,0 +1,27 @@
+Source: xmlunit
+Section: java
+Priority: optional
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders:
+ Ludovic Claude <ludovic.claude@laposte.net>,
+ Emmanuel Bourg <ebourg@apache.org>
+Build-Depends:
+ ant,
+ ant-optional,
+ debhelper (>= 11),
+ default-jdk,
+ junit,
+ maven-repo-helper
+Standards-Version: 4.4.0
+Vcs-Git: https://salsa.debian.org/java-team/xmlunit.git
+Vcs-Browser: https://salsa.debian.org/java-team/xmlunit
+Homepage: http://www.xmlunit.org
+
+Package: libxmlunit-java
+Architecture: all
+Depends: ${misc:Depends}, junit
+Description: Unit testing for XML documents
+ XMLUnit extends JUnit and NUnit to enable unit testing of XML.
+ It compares a control XML document to a test document or the result of a
+ transformation, validates documents, and compares the results of XPath
+ expressions.

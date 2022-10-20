@@ -1,0 +1,20 @@
+--- src/java/org/custommonkey/xmlunit/DifferenceEngine.java	(revision 578)
++++ src/java/org/custommonkey/xmlunit/DifferenceEngine.java	(working copy)
+@@ -660,7 +662,17 @@
+         return aNode.getNodeName();
+     }
+ 
++    private String getQName(Node aNode) {
++        return getQName(aNode, isNamespaced(aNode));
++    }
+ 
++    private String getQName(Node aNode, boolean isNamespacedNode) {
++        if (isNamespacedNode) {
++            return "{" + aNode.getNamespaceURI() + "}" + aNode.getLocalName();
++        }
++        return aNode.getNodeName();
++    }
++
+     /**
+      * @param attribute
+      * @return true if the attribute represents a namespace declaration
